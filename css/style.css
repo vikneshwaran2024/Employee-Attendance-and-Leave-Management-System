@@ -1,0 +1,276 @@
+/* Main styles for Employee Attendance & Leave Management System */
+
+/* Main Layout */
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.wrapper {
+    min-height: 100vh;
+}
+
+/* Sidebar Styling */
+#sidebar {
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 999;
+    transition: all 0.3s;
+    overflow-y: auto;
+}
+
+#sidebar.active {
+    margin-left: -250px;
+}
+
+#sidebar .sidebar-header {
+    background: #343a40;
+}
+
+#sidebar ul.components {
+    padding: 0;
+}
+
+#sidebar ul li {
+    padding: 3px 0;
+}
+
+#sidebar ul li a {
+    color: rgba(255, 255, 255, 0.8);
+    display: block;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: all 0.2s;
+}
+
+#sidebar ul li a:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+#sidebar ul li.active > a {
+    color: #fff;
+    background: #007bff;
+}
+
+#sidebar .collapse ul li a {
+    padding-left: 30px;
+}
+
+/* Content Area */
+#content {
+    width: calc(100% - 250px);
+    min-height: 100vh;
+    transition: all 0.3s;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+#content.active {
+    width: 100%;
+}
+
+/* Notification Badge */
+.notification-badge {
+    position: absolute;
+    top: 3px;
+    right: 5px;
+    font-size: 0.6rem;
+}
+
+/* Unread notification */
+.unread-notification {
+    background-color: rgba(0, 123, 255, 0.05);
+    font-weight: 500;
+}
+
+/* Login page styles */
+.login-card {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.system-name {
+    color: #0d6efd;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+/* Login Page */
+.login-form {
+    max-width: 450px;
+    margin: 50px auto;
+    padding: 30px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.login-logo {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.login-logo h1 {
+    font-weight: bold;
+}
+
+/* Dashboard styles */
+.dashboard-card {
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    margin-bottom: 20px;
+    transition: transform 0.3s;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.card-icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    color: #0d6efd;
+    opacity: 0.7;
+}
+
+/* Attendance page styles */
+.attendance-buttons {
+    margin: 20px 0;
+}
+
+.attendance-history {
+    margin-top: 30px;
+}
+
+/* Attendance Check-in/out */
+.attendance-card {
+    text-align: center;
+    padding: 30px 20px;
+}
+
+.attendance-card .btn-check-action {
+    font-size: 1.2rem;
+    padding: 12px 25px;
+    margin-top: 15px;
+}
+
+.attendance-time {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+    color: #343a40;
+}
+
+.attendance-date {
+    font-size: 1rem;
+    margin-bottom: 15px;
+    color: #6c757d;
+}
+
+/* Leave request styles */
+.leave-type-badge {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 0.25rem;
+}
+
+.leave-status-pending {
+    color: #212529;
+    background-color: #ffc107;
+}
+
+.leave-status-approved {
+    color: white;
+    background-color: #28a745;
+}
+
+.leave-status-rejected {
+    color: white;
+    background-color: #dc3545;
+}
+
+/* Profile page styles */
+.profile-header {
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+}
+
+.profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Admin panel styles */
+.admin-section-header {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #dee2e6;
+    margin-bottom: 20px;
+}
+
+/* Status and Badge Colors */
+.status-present {
+    color: #28a745;
+}
+
+.status-absent {
+    color: #dc3545;
+}
+
+.status-late {
+    color: #ffc107;
+}
+
+.status-half-day {
+    color: #17a2b8;
+}
+
+/* Forms */
+label {
+    font-weight: 500;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .navbar-brand {
+        font-size: 1.2rem;
+    }
+    
+    .card-icon {
+        font-size: 2rem;
+    }
+
+    #sidebar {
+        margin-left: -250px;
+    }
+    #sidebar.active {
+        margin-left: 0;
+    }
+    #content {
+        width: 100%;
+    }
+    #content.active {
+        width: calc(100% - 250px);
+    }
+}

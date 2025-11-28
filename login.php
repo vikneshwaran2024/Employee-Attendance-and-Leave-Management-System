@@ -115,10 +115,10 @@ $csrfToken = generateCSRFToken();
                 
                 <hr>
                 
-                <div class="text-center text-muted small">
-                    <p class="mb-1">Default Admin Credentials:</p>
-                    <p class="mb-0">Email: admin@company.com</p>
-                    <p class="mb-0">Password: password</p>
+                <div class="alert alert-warning small mb-0">
+                    <strong>⚠️ Development Only:</strong><br>
+                    Default Admin: admin@company.com / password<br>
+                    <em>Change immediately in production!</em>
                 </div>
             </div>
         </div>

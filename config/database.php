@@ -2,12 +2,17 @@
 /**
  * Database Configuration and Connection
  * Uses PDO with prepared statements for security
+ * 
+ * IMPORTANT: For production environments, use environment variables
+ * or a secure configuration method for sensitive credentials.
+ * Never commit actual credentials to version control.
  */
 
-define('DB_HOST', 'localhost');
-define('DB_NAME', 'attendance_system');
-define('DB_USER', 'root');
-define('DB_PASS', '');
+// Use environment variables if available, fallback to defaults for development
+define('DB_HOST', getenv('DB_HOST') ?: 'localhost');
+define('DB_NAME', getenv('DB_NAME') ?: 'attendance_system');
+define('DB_USER', getenv('DB_USER') ?: 'root');
+define('DB_PASS', getenv('DB_PASS') ?: '');
 define('DB_CHARSET', 'utf8mb4');
 
 /**

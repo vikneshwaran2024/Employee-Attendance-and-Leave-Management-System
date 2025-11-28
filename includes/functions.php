@@ -225,18 +225,38 @@ function formatStatusBadge($status) {
 
 /**
  * Get client IP address
+ * Handles proxies, load balancers, and IPv6 addresses
  * @return string
  */
 function getClientIP() {
     $ipAddress = '';
-    if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
-        $ipAddress = $_SERVER['HTTP_CLIENT_IP'];
-    } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-        $ipAddress = $_SERVER['HTTP_X_FORWARDED_FOR'];
-    } else {
-        $ipAddress = $_SERVER['REMOTE_ADDR'] ?? '';
+    
+    // Check for various proxy headers in order of reliability
+    $headers = [
+        'HTTP_X_REAL_IP',
+        'HTTP_X_FORWARDED_FOR',
+        'HTTP_CLIENT_IP',
+        'HTTP_X_FORWARDED',
+        'HTTP_FORWARDED_FOR',
+        'HTTP_FORWARDED',
+        'REMOTE_ADDR'
+    ];
+    
+    foreach ($headers as $header) {
+        if (!empty($_SERVER[$header])) {
+            // X-Forwarded-For may contain multiple IPs; take the first one
+            $ips = explode(',', $_SERVER[$header]);
+            $ip = trim($ips[0]);
+            
+            // Validate IPv4 or IPv6
+            if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4 | FILTER_FLAG_IPV6)) {
+                $ipAddress = $ip;
+                break;
+            }
+        }
     }
-    return filter_var($ipAddress, FILTER_VALIDATE_IP) ?: '';
+    
+    return $ipAddress;
 }
 
 /**

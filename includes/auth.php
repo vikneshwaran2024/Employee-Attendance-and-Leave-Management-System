@@ -146,8 +146,10 @@ function getCurrentUserName() {
  * @param string $description
  */
 function logActivity($action, $description = '') {
+    require_once __DIR__ . '/functions.php';
+    
     $userId = getCurrentUserId();
-    $ipAddress = $_SERVER['REMOTE_ADDR'] ?? '';
+    $ipAddress = getClientIP();
     
     $sql = "INSERT INTO activity_logs (user_id, action, description, ip_address) VALUES (?, ?, ?, ?)";
     executeInsert($sql, [$userId, $action, $description, $ipAddress]);
